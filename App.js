@@ -2,27 +2,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+//React Element => Object => HTML Element (after rendering)
+
+// const heading =React.createElement("h1",
+// {id : "heading"},
+// "Namaste React");
+// console.log(heading);
 
 
-const parent = React.createElement(
-    "div", 
-    {id :"parent"},
-    [React.createElement(
-        "div",
-        {id : "child"},
-        [React.createElement("h1",{},"This is namaste react") ,
-        React.createElement("h2",{},"I am an h2 tag")
-    ]),
-    React.createElement(
-        "div",
-        {id : "child2"},
-        [React.createElement("h1",{},"I am an h1 tag.") ,
-        React.createElement("h2",{},"I am an h2 tag")
-    ])
-]);
+//JSX React - HTML like syntax
+//JSX code is transpiled before it reaches the JS engine by parcel(babel).
+//JSX => React.createelement => Reacr Element => Js object => HTML element
 
-console.log(parent);  //object
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const title = () => (
+    <h1 className="head" tabIndex="5">
+        Nameste React using JSX
+    </h1>
+);
+const number = 1000;
 
-root.render(parent);
+//React Components
+const HeadingComponent = () => (
+    <div id="container">
+        {title}
+        <h1 className="heading">Namaste React Functional Component</h1>
+    </div>
+);
+
+const root =  ReactDOM.createRoot(document.getElementById("root"));
+
+root . render(<HeadingComponent />);
