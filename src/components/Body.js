@@ -1,6 +1,7 @@
 import RestrauntCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [ListOfRestaurants, setListOfRestaurant] = useState([]);
@@ -26,13 +27,13 @@ const Body = () => {
     setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
-  return ListOfRestaurants.length == 0 ? (
+  return ListOfRestaurants.length== 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter">
         <div className="search">
-          <input type="text" className="search-box" 
+          <input type="text" placeholder="Search for your fav food..." className="search-box" 
           value={searchText} 
           onChange={(e)=>{
             setSearchText(e.target.value);
@@ -59,7 +60,10 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestrauntCard key={restaurant.info.id} resData={restaurant} />
+          <Link 
+          key={restaurant.info.id} 
+          to={"/restaurants/" + restaurant.info.id}>
+            <RestrauntCard  resData={restaurant} /></Link>
         ))}
       </div>
     </div>

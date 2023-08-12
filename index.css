@@ -3,8 +3,12 @@
     justify-content: space-between;
     border: 3px solid black;
     height: 200px;
+    background-color: #ffdd99;
 }
 
+.body{
+    background-color: #99b5e9;
+}
 
 .logo{
     width: 200px;
@@ -74,6 +78,7 @@
 .login{
     padding: 0px 20px;
     cursor: pointer;
+    background-color: #e7c787;
 }
 
 .filter{
