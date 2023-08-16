@@ -12,9 +12,9 @@ const RestrauntCard = (props) => {
       } = resData?.info;
   
     return (
-      <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 ">
+      <div className="m-4 p-4 w-[270px] h-[560px] rounded-lg bg-gray-100 hover:bg-gray-300 ">
         <img
-          className="rounded-lg"
+          className="rounded-lg h-[270px] w-[270px]"
           alt="res-logo"
           src={
             CDN_URL +
