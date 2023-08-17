@@ -1,8 +1,9 @@
 import RestrauntCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
   const [ListOfRestaurants, setListOfRestaurant] = useState([]);
@@ -10,7 +11,6 @@ const Body = () => {
 
   const [searchText,setSearchText] = useState("");
 
-  console.log("Body Rendered", ListOfRestaurants);
   
   useEffect(() => {
     fetchData();
@@ -33,6 +33,8 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus == false) return <h1>Looks like you're offline! Please check your internet connection.</h1>
 
+  const {setUserName, loggedInUser} = useContext(UserContext);
+
   return ListOfRestaurants.length== 0 ? (
     <Shimmer />
   ) : (
@@ -45,7 +47,8 @@ const Body = () => {
           onChange={(e)=>{
             setSearchText(e.target.value);
           }}/>
-          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg " onClick={()=>{
+          <button 
+          className="px-4 py-2 bg-green-100 m-4 rounded-lg " onClick={()=>{
 
             const filteredRestaurant = ListOfRestaurants.filter(
               (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -66,6 +69,13 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+
+        <div className="search m-4 p-4 flex items-center">
+            <label>UserName : </label>
+            <input className="border border-black p-2 m-2" 
+            value={loggedInUser} 
+            onChange={(e)=>setUserName(e.target.value)}/>
         </div>
       </div>
 
