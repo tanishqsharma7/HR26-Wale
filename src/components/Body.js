@@ -59,7 +59,7 @@ const Body = () => {
 
         <div className="search m-4 p-4 flex items-centre">
           <button
-            className="px-4 py-2 bg-gray-100 rounded-lg "
+            className="px-4 py-2 bg-rose-100 rounded-lg "
             onClick={() => {
               const filteredList = ListOfRestaurants.filter(
                 (res) => res.info.avgRating > 4
