@@ -41,12 +41,17 @@ const Body = () => {
     <div className="body">
       <div className="filter flex">
         <div className="search m-4 p-4 flex items-center ">
-          <input type="text" placeholder="  Search here..." 
+          
+          <input
+           type="text" 
+           data-testid="searchInput"
+           placeholder="  Search here..." 
           className="border border-solid border-black" 
           value={searchText} 
           onChange={(e)=>{
             setSearchText(e.target.value);
           }}/>
+
           <button 
           className="px-4 py-2 bg-green-100 m-4 rounded-lg " onClick={()=>{
 
