@@ -1,7 +1,7 @@
 export const  CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 
-export const LOGO_URL="https://i.ibb.co/fn1ShTw/Black-and-White-Illustration-Food-Logo-removebg-preview.png";
+export const LOGO_URL="https://i.ibb.co/JzrxQ1w/HR26-wale-wo-bg.png";
 
 //Named export
 
