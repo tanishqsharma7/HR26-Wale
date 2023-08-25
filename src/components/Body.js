@@ -6,7 +6,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
-  const [ListOfRestaurants, setListOfRestaurant] = useState([]);
+  const [ listOfRestaurants, setListOfRestaurants] = useState([]);
+
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText,setSearchText] = useState("");
@@ -24,7 +25,7 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json);
-    setListOfRestaurant(
+    setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -35,7 +36,7 @@ const Body = () => {
 
   const {setUserName, loggedInUser} = useContext(UserContext);
 
-  return ListOfRestaurants.length== 0 ? (
+  return listOfRestaurants.length == 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -55,7 +56,7 @@ const Body = () => {
           <button 
           className="px-4 py-2 bg-green-100 m-4 rounded-lg " onClick={()=>{
 
-            const filteredRestaurant = ListOfRestaurants.filter(
+            const filteredRestaurant = listOfRestaurants.filter(
               (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
               setFilteredRestaurant(filteredRestaurant);
 
@@ -66,12 +67,10 @@ const Body = () => {
           <button
             className="px-2 h-14 bg-rose-100 rounded-lg "
             onClick={() => {
-              const filteredList = ListOfRestaurants.filter(
-                (res) => res.info.avgRating > 4
-              );
-              setListOfRestaurant(filteredList);
-            }}
-          >
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.info.avgRating > 4);
+              setListOfRestaurants(filteredList);
+            }}>
             Top Rated Restaurants
           </button>
         </div>
